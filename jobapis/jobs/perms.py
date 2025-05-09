@@ -26,3 +26,11 @@ class IsVerifiedEmployer(permissions.BasePermission):
                 and request.user.is_verified)
 
 
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    """
+    Chỉ cho phép chủ sở hữu CV chỉnh sửa, còn người khác chỉ đọc được.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        return obj.applicant == request.user
+

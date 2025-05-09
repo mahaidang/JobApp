@@ -52,8 +52,10 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'rest_framework.authtoken',
     'dj_rest_auth.registration',
+    'cloudinary',
+    'cloudinary_storage',
 ]
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
@@ -111,7 +113,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jobdb',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'Abc123',
         'HOST': '' # mặc định localhost
     }
 }
@@ -168,9 +170,9 @@ import cloudinary.uploader
 
 # Configuration
 cloudinary.config(
-    cloud_name = "dt3k9eyfz",
-    api_key = "235356479665888",
-    api_secret = "UyKamaPKqSJmOW_JTUyIkaeGGjA", # Click 'View API Keys' above to copy your API secret
+    cloud_name = "dzupgsily",
+    api_key = "927979932167834",
+    api_secret = "ORfzjuPe-2V_xqzbEda4qPsgl2A", # Click 'View API Keys' above to copy your API secret
     secure=True
 )
 
@@ -189,5 +191,5 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-CLIENT_ID = 'fEtJ5OQ12g5D1WlqFaHmXHv6ZuOtgz4BiC0wschc'
-CLIENT_SECRET = 'gKewrtIHovTSnLVaNopxUXHIoe5wkjuS11VEOwq1ElsS1bfpoGSE8g0hnX1DQLy2QEkqFzy5NdWSNVhnyRxbVJo2PezFXoBd5KF1yiuMNYDTMXUMLzEkO6ToCy1c9pVc'
+CLIENT_ID = 'lm7NFVclW9OJch5AimyEq1m3vqqV2RiYcdXwDn5e'
+CLIENT_SECRET = 'AB3iIWG4RU9megalVcmoDjavGEAovWBXNkCMPcFbxiJENZRq4k1hqtFwXnBBDFZznM32ATaC81ScIGaprwDnd4ItpC1GaxegorHVd4DRRvPfiFluiDGE4KF4zA7IVkVL'
