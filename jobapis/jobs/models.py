@@ -19,7 +19,7 @@ class User(AbstractUser):
     is_verified = models.BooleanField(default=False)
     phone = models.CharField(max_length=15, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
-    profile_picture = CloudinaryField('profile_pictures/', blank=True, null=True)
+    profile_picture = CloudinaryField(folder='profile_pictures', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if self.is_superuser:
@@ -86,10 +86,12 @@ class Skill(BaseModel):
         return self.name
 
 
+from cloudinary.models import CloudinaryField
+
 class CV(BaseModel):
     applicant = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    file = models.FileField(upload_to='cv/')
+    file = CloudinaryField(resource_type='raw', folder='cv')
     skills = models.ManyToManyField(Skill, blank=True)
 
     def __str__(self):

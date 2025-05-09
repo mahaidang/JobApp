@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.urls import path
-from .models import User
+from .models import User, CV
 
 
 class MyAdminSite(admin.AdminSite):
@@ -17,7 +17,7 @@ class MyAdminSite(admin.AdminSite):
         ] + super().get_urls()
 
     def stats_view(self, request):
-        stats = Job.objects.annotate(lesson_count=Count('lesson__id')).values('id', 'subject', 'lesson_count')
+        stats = Jobs.objects.annotate(lesson_count=Count('lesson__id')).values('id', 'subject', 'lesson_count')
 
         return TemplateResponse(request,'admin/stats_view.html', {
             'stats': stats
@@ -26,4 +26,6 @@ class MyAdminSite(admin.AdminSite):
 admin_site = MyAdminSite(name='admin')
 
 admin_site.register(User)
+admin.site.register(CV)
+
 
